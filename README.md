@@ -57,4 +57,4 @@ BuzzOff is open-source and licensed under the MIT License. You are free to modif
 ### 📣 **Get Involved**
 
 - **🤝 Contribute:** Feel free to open issues, suggest improvements, or submit pull requests if you want to help improve the project!
-- **💬 Share Your Thoughts:** Let us know how you’re using BuzzOff and if you have any feedback to improve it!
+- **💬 Share Your Thoughts:** Let me know how you’re using BuzzOff and if you have any feedback to improve it!
