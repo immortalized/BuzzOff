@@ -174,8 +174,9 @@
         observer.disconnect();
         console.warn('⏳ 30 seconds passed. Stopping observer. Checking network requests.');
 
-        // Check network requests for Honey after stopping the observer
+        // Stage 2: Check network requests for Honey after stopping the observer
         if (checkNetwork()) {
+            // Honey has injected itself, show the popup
             showAntiHoneyPopup();
         } else{
             console.warn('✅ Honey not found.');
