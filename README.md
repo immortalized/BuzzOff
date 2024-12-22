@@ -26,7 +26,7 @@ To integrate **BuzzOff** into your website, simply include the provided JavaScri
 
 #### Step-by-Step Instructions:
 
-1. **Copy the Script:** Copy the provided JavaScript code (you can find it in the `BuzzOff` project).
+1. **Copy the Script:** Copy the provided JavaScript code.
    
 2. **Embed in Your Website:**
    - Add the script directly into your website’s HTML file, ideally just before the closing `</body>` tag.
