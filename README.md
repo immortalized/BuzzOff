@@ -1,6 +1,7 @@
 # 🚫 **BuzzOff** - Anti-Honey Script
 
 **BuzzOff** is a JavaScript script designed for website owners who want to warn users about the potentially exploitative practices of the Honey extension. Honey, a popular browser extension for finding coupons, has been criticized for hijacking affiliate links and manipulating coupon codes, which undermines the integrity of the e-commerce ecosystem. This script helps inform users about these concerns and encourages them to uninstall the extension before completing their checkout.
+
 ![How it works](https://github.com/immortalized/BuzzOff/blob/main/buzzoff.gif)
 
 ---
