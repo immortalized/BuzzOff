@@ -1,9 +1,23 @@
 (function() {
     'use strict';
 
+    // Utility function to generate random IDs
+    function generateRandomId(length = 20) {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        for (let i = 0; i < length; i++) {
+            result += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return result;
+    }
+
+    // Create a unique ID for the popup and close button
+    const popupId = generateRandomId();
+    const closeButtonId = generateRandomId();
+
     function showAntiHoneyPopup() {
         const popup = document.createElement('div');
-        popup.id = 'buzz-off-popup';
+        popup.id = popupId; // Assign the dynamically generated ID
 
         popup.innerHTML = `
             <h2 class="popup-heading">Honey Extension Warning 🚨</h2>
@@ -26,19 +40,19 @@
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/vc4yL3YTwWk" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="popup-close-btn-container">
-                <button id="buzz-off-close" class="popup-close-btn">Close</button>
+                <button id="${closeButtonId}" class="popup-close-btn">Close</button>
             </div>
         `;
 
         document.body.appendChild(popup);
 
-        document.getElementById('buzz-off-close').addEventListener('click', () => {
+        document.getElementById(closeButtonId).addEventListener('click', () => {
             popup.remove();
         });
 
         const style = document.createElement('style');
         style.innerHTML = `
-            #buzz-off-popup {
+            #${popupId} {
                 position: fixed;
                 top: 50%;
                 left: 50%;
@@ -61,25 +75,25 @@
                 transition: transform 0.3s ease-in-out;
             }
 
-            .popup-heading {
+            #${popupId} .popup-heading {
                 color: #e74c3c;
                 font-size: 1.8em;
                 margin-bottom: 10px;
             }
 
-            .popup-text, .popup-text-center {
+            #${popupId} .popup-text, #${popupId} .popup-text-center {
                 font-size: 1em;
                 color: #bdc3c7;
             }
 
-            .popup-cta {
+            #${popupId} .popup-cta {
                 font-size: 1em;
                 color: #e74c3c;
                 font-weight: bold;
                 margin-top: 20px;
             }
 
-            .popup-list {
+            #${popupId} .popup-list {
                 font-size: 1em;
                 margin: 10px 0 15px;
                 padding-left: 20px;
@@ -88,22 +102,22 @@
                 list-style-position: inside;
             }
 
-            .popup-text-center {
+            #${popupId} .popup-text-center {
                 text-align: center;
                 margin-top: 20px;
             }
 
-            .popup-iframe-container {
+            #${popupId} .popup-iframe-container {
                 text-align: center;
                 margin-top: 20px;
             }
 
-            .popup-close-btn-container {
+            #${popupId} .popup-close-btn-container {
                 text-align: center;
                 margin-top: 15px;
             }
 
-            .popup-close-btn {
+            #${popupId} .popup-close-btn {
                 padding: 12px 20px;
                 background-color: #e74c3c;
                 color: white;
@@ -115,21 +129,21 @@
             }
 
             /* Scrollbar styles */
-            #buzz-off-popup::-webkit-scrollbar {
+            #${popupId}::-webkit-scrollbar {
                 width: 10px;
             }
 
-            #buzz-off-popup::-webkit-scrollbar-thumb {
+            #${popupId}::-webkit-scrollbar-thumb {
                 background-color: #2c3e50;
                 border-radius: 10px;
                 border: 3px solid #171d24;
             }
 
-            #buzz-off-popup::-webkit-scrollbar-thumb:hover {
+            #${popupId}::-webkit-scrollbar-thumb:hover {
                 background-color: #232e3e;
             }
 
-            #buzz-off-popup::-webkit-scrollbar-track {
+            #${popupId}::-webkit-scrollbar-track {
                 background-color: #171d24;
                 border-radius: 10px;
             }
