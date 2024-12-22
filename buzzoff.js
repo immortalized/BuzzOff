@@ -46,7 +46,7 @@
                 z-index: 999999;
                 background-color: #171d24;
                 color: #ecf0f1;
-                border: 2px solid #e74c3c;
+                border: 3px solid #171d24;
                 border-radius: 12px;
                 box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
                 max-width: 600px;
@@ -55,8 +55,8 @@
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 padding: 20px;
                 line-height: 1.6;
-                overflow-y: auto;
                 max-height: 80%;
+                overflow-y: auto;
                 overflow-x: hidden;
                 transition: transform 0.3s ease-in-out;
             }
@@ -151,7 +151,14 @@
         return false;
     }
 
-    // Stage 1: Observe DOM for Honey injection
+    // Fallback Stage: Check network requests for Honey if no detection in Stage 1
+    const fallbackTimeout = setTimeout(() => {
+        if (checkNetwork()) {
+            showAntiHoneyPopup();
+        }
+    }, 30000);
+
+    // Main Stage: Observe DOM for Honey injection
     const observer = new MutationObserver((mutationsList, observer) => {
         mutationsList.forEach(mutation => {
             if (mutation.type === 'childList') {
@@ -161,25 +168,12 @@
                     showAntiHoneyPopup();
                     // Stop observing once Honey is detected
                     observer.disconnect();
+                    // Cancel the timeout
+                    clearTimeout(fallbackTimeout);
                 }
             }
         });
     });
 
     observer.observe(document.documentElement, { childList: true, subtree: true });
-
-    console.warn('🔄 Waiting for Honey to inject itself.');
-
-    setTimeout(() => {
-        observer.disconnect();
-        console.warn('⏳ 30 seconds passed. Stopping observer. Checking network requests.');
-
-        // Stage 2: Check network requests for Honey after stopping the observer
-        if (checkNetwork()) {
-            // Honey has injected itself, show the popup
-            showAntiHoneyPopup();
-        } else{
-            console.warn('✅ Honey not found.');
-        }
-    }, 30000);
 })();
