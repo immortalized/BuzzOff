@@ -46,7 +46,7 @@
                 z-index: 999999;
                 background-color: #171d24;
                 color: #ecf0f1;
-                border: 2px solid #404447;
+                border: 2px solid #e74c3c;
                 border-radius: 12px;
                 box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
                 max-width: 600px;
