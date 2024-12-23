@@ -157,7 +157,6 @@
             const resources = performance.getEntriesByType('resource');
             for (let i = 0; i < resources.length; i++) {
                 if (resources[i].name.includes('cdn.honey.io')) {
-                    showAntiHoneyPopup();
                     return true;
                 }
             }
